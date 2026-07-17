@@ -1,21 +1,17 @@
-import { useRef, useState } from "react";
 import ShowName from "./ShowName";
-import Dispalylist from "./DisplayLlist";
+import { useState } from "react";
 
-const UserForm = () => {
-  //const nameRef = useRef(null);
-  // const labelRef = useRef(null);
-  const [name, setName] = useState([]);
+const UserForm = ({ addName }) => {
   const [showName, setshowName] = useState("");
 
-  const addName = (e) => {
-    e.preventDefault();
-    setName([...name, showName]);
-    // nameRef.current.value = "";
-  };
-
+  // THis function we call props drilling to children by passing data to chidlren
   const DipslayName = (e) => {
     setshowName(e.target.value);
+  };
+  //This function create for call addName function from parent which have
+  //which is execute onClick event.
+  const addList = (e) => {
+    addName(e, showName);
   };
   return (
     <div>
@@ -30,11 +26,10 @@ const UserForm = () => {
           />
         </div>
 
-        <button className="btn btn-primary" onClick={addName}>
+        <button className="btn btn-primary" onClick={addList}>
           Add
         </button>
       </form>
-      <Dispalylist name={name} />
     </div>
   );
 };
