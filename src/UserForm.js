@@ -1,24 +1,27 @@
 import { useRef, useState } from "react";
+import ShowName from "./ShowName";
+import Dispalylist from "./DisplayLlist";
 
 const UserForm = () => {
   const nameRef = useRef(null);
   const labelRef = useRef(null);
   const [name, setName] = useState([]);
-  const DipslayName = (e) => {
-    //setName(e.target.value);
-    labelRef.current.textContent = nameRef.current.value;
-    //console.log(labelRef);
-  };
+  const [showName, setshowName] = useState("");
+
   const addName = (e) => {
     e.preventDefault();
     setName([...name, nameRef.current.value]);
+    nameRef.current.value = "";
   };
 
+  const DipslayName = (e) => {
+    setshowName(nameRef.current.value);
+  };
   return (
     <div>
       <form action="" className="card p-3 shadow-lg">
         <div className="mb-3">
-          <p htmlFor="Dipslayname" ref={labelRef}></p>
+          <ShowName name={showName}></ShowName>
           <input
             type="text"
             placeholder="Input Name"
@@ -32,22 +35,7 @@ const UserForm = () => {
           Add
         </button>
       </form>
-
-      <div className="border text-start ps-2"></div>
-      <table className="table table-striped table-hover">
-        <tbody>
-          <tr>
-            <th>Number</th>
-            <th>Name</th>
-          </tr>
-          {name.map((item, index) => (
-            <tr>
-              <td>{index + 1}</td>
-              <td>{item}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Dispalylist name={name} />
     </div>
   );
 };
