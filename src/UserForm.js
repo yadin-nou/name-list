@@ -3,19 +3,19 @@ import ShowName from "./ShowName";
 import Dispalylist from "./DisplayLlist";
 
 const UserForm = () => {
-  const nameRef = useRef(null);
-  const labelRef = useRef(null);
+  //const nameRef = useRef(null);
+  // const labelRef = useRef(null);
   const [name, setName] = useState([]);
   const [showName, setshowName] = useState("");
 
   const addName = (e) => {
     e.preventDefault();
-    setName([...name, nameRef.current.value]);
-    nameRef.current.value = "";
+    setName([...name, showName]);
+    // nameRef.current.value = "";
   };
 
   const DipslayName = (e) => {
-    setshowName(nameRef.current.value);
+    setshowName(e.target.value);
   };
   return (
     <div>
@@ -27,7 +27,6 @@ const UserForm = () => {
             placeholder="Input Name"
             className="form-control mt-2"
             onChange={DipslayName}
-            ref={nameRef}
           />
         </div>
 

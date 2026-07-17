@@ -8,7 +8,7 @@ const Dispalylist = ({ name }) => {
             <th>Name</th>
           </tr>
           {name.map((item, index) => (
-            <tr>
+            <tr key={index + 1}>
               <td>{index + 1}</td>
               <td>{item}</td>
             </tr>
