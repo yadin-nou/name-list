@@ -10,9 +10,11 @@ const UserForm = ({ addName }) => {
   };
   //This function create for call addName function from parent which have
   //which is execute onClick event.
-  const addList = (e) => {
-    addName(e, showName);
+  const addListHandle = (e) => {
+    e.preventDefault();
+    addName(showName);
   };
+
   return (
     <div>
       <form action="" className="card p-3 shadow-lg">
@@ -26,7 +28,7 @@ const UserForm = ({ addName }) => {
           />
         </div>
 
-        <button className="btn btn-primary" onClick={addList}>
+        <button className="btn btn-primary" onClick={addListHandle}>
           Add
         </button>
       </form>
